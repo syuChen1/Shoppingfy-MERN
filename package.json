@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "MERN stack E-commerce app",
   "main": "server.js",
+  "type": "module",
   "scripts": {
     "start": "node server/server",
     "server": "nodemon server/server",
@@ -20,7 +21,10 @@
   },
   "homepage": "https://github.com/syuChen1/Shoppingfy-MERN#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "colors": "^1.4.0",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.13.0"
   },
   "devDependencies": {
     "concurrently": "^6.2.0",
