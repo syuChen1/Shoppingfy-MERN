@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Product from './Product';
 
 const Rating = ({ value, text, color }) => {
   return (
