@@ -1,4 +1,3 @@
-import { USER_LOGIN_REQUEST } from '../constants/userConstants';
 import axios from 'axios';
 import {
   USER_LOGIN_FAIL,
@@ -6,7 +5,6 @@ import {
   USER_LOGIN_SUCCESS,
   USER_LOGOUT,
 } from '../constants/userConstants';
-import { PRODUCT_LIST_FAIL } from '../constants/productConstants';
 
 export const login = (email, password) => async (dispatch) => {
   try {
@@ -30,14 +28,14 @@ export const login = (email, password) => async (dispatch) => {
     );
 
     dispatch({
-      tyoe: USER_LOGIN_SUCCESS,
+      type: USER_LOGIN_SUCCESS,
       payload: data,
     });
 
     localStorage.setItem('userInfo', JSON.stringify(data));
   } catch (error) {
     dispatch({
-      type: PRODUCT_LIST_FAIL,
+      type: USER_LOGIN_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message
