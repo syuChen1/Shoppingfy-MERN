@@ -85,6 +85,7 @@ const CartScreen = ({ match, location, history }) => {
                   </Col>
                   <Col md={2}>
                     <Button
+                      className='my-3'
                       type='button'
                       variant='light'
                       onClick={() => removeFromCartHandler(item.product)}
