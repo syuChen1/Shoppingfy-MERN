@@ -22,3 +22,7 @@ h2 {
 .rating span {
   margin: 0.1rem;
 }
+
+.form-group {
+  margin-top: 0.5rem;
+}

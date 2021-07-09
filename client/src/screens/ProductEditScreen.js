@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Button, Form } from 'react-bootstrap';
@@ -18,6 +19,8 @@ const ProductEditScreen = ({ match, history }) => {
   const [category, setCategory] = useState('');
   const [countInStock, setCountInStock] = useState(0);
   const [description, setDescription] = useState('');
+  const [uploading, setUploading] = useState(false);
+  const [uploadTypeMsg, setUploadTypeMsg] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -48,6 +51,29 @@ const ProductEditScreen = ({ match, history }) => {
       setDescription(product.description);
     }
   }, [dispatch, productId, product, history, successUpdate]);
+
+  const uploadFileHandler = async (e) => {
+    const file = e.target.files[0];
+    const formData = new FormData();
+    formData.append('image', file);
+    setUploading(true);
+
+    try {
+      const config = {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      };
+      const { data } = await axios.post('/api/upload', formData, config);
+      setImage(data);
+      setUploading(false);
+      setUploadTypeMsg(false);
+    } catch (error) {
+      console.error(error);
+      setUploading(false);
+      setUploadTypeMsg(true);
+    }
+  };
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -108,6 +134,19 @@ const ProductEditScreen = ({ match, history }) => {
                 value={image}
                 onChange={(e) => setImage(e.target.value)}
               ></Form.Control>
+              or
+              {uploadTypeMsg && (
+                <Message variant='danger'>
+                  Image Only. Please select file with extension jpg / jepg /
+                  png.
+                </Message>
+              )}
+              <Form.File
+                id='image-file'
+                custom
+                onChange={uploadFileHandler}
+              ></Form.File>
+              {uploading && <Loader />}
             </Form.Group>
 
             <Form.Group controlId='brand'>
@@ -150,7 +189,12 @@ const ProductEditScreen = ({ match, history }) => {
               ></Form.Control>
             </Form.Group>
 
-            <Button type='submit' variant='primary' className='my-3'>
+            <Button
+              type='submit'
+              variant='primary'
+              className='my-3'
+              disabled={uploadTypeMsg}
+            >
               Update
             </Button>
           </Form>
