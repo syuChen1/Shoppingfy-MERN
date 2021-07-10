@@ -16,13 +16,16 @@ const RegisterScreen = ({ location, history }) => {
 
   const dispatch = useDispatch();
 
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo: userLoggedin } = userLogin;
+
   const userRegister = useSelector((state) => state.userRegister);
   const { loading, error, userInfo } = userRegister;
 
   const redirect = location.search ? location.search.split('=')[1] : '/';
 
   useEffect(() => {
-    if (userInfo) {
+    if (userInfo || userLoggedin) {
       history.push(redirect);
     }
   }, [history, userInfo, redirect]);
@@ -92,8 +95,8 @@ const RegisterScreen = ({ location, history }) => {
       <Row className='py-3'>
         <Col>
           Have an Account?{' '}
-          <Link to={redirect ? `/login/?redirect=${redirect}` : '/login'}>
-            Register
+          <Link to={redirect ? `/login?redirect=${redirect}` : '/login'}>
+            Log In
           </Link>
         </Col>
       </Row>
