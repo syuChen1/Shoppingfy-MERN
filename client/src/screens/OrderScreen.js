@@ -62,7 +62,7 @@ const OrderScreen = ({ match, history }) => {
         setSdkReady(true);
       }
     }
-  }, [dispatch, order, orderId, successPay, successDeliver]);
+  }, [dispatch, order, orderId, successPay, successDeliver, history, userInfo]);
 
   const successPaymentHandler = (paymentResult) => {
     console.log(paymentResult);
@@ -185,7 +185,7 @@ const OrderScreen = ({ match, history }) => {
                 </Row>
               </ListGroup.Item>
 
-              {order.user._id == userInfo._id && !order.isPaid && (
+              {order.user._id === userInfo._id && !order.isPaid && (
                 <ListGroup.Item>
                   {loadingPay && <Loader />}
                   {!sdkReady ? (
