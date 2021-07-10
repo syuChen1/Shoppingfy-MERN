@@ -6,15 +6,17 @@ import Message from '../components/Message';
 import Loader from '../components/Loader';
 import { listProducts } from '../action/productActions';
 
-const HomeScreen = () => {
+const HomeScreen = ({ match }) => {
   const disaptch = useDispatch();
+
+  const keyword = match.params.keyword;
 
   const productList = useSelector((state) => state.productList);
   const { loading, error, products } = productList;
 
   useEffect(() => {
-    disaptch(listProducts());
-  }, [disaptch]);
+    disaptch(listProducts(keyword));
+  }, [disaptch, keyword]);
 
   return (
     <>
