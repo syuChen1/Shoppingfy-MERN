@@ -1,0 +1,11 @@
+sudo: required
+services:
+  - docker
+
+language: generic
+
+before_install:
+  - docker build -t ryanyyyy11/shoppingfy-test -f ./client/Dockerfile.dev ./client
+
+script:
+  - docker run -e CI=true ryanyyyy11/shoppingfy-test npm test
