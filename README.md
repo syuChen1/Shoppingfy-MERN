@@ -1,5 +1,5 @@
 # Shoppingfy-MERN       [![Build Status](https://travis-ci.com/syuChen1/Shoppingfy-MERN.svg?branch=master)](https://travis-ci.com/syuChen1/Shoppingfy-MERN)
-# Features:
+## Features:
 - **User**: 
   - Full featured shopping cart
   - Product reviews and ratings 
