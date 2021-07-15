@@ -1,4 +1,5 @@
 # Shoppingfy-MERN
+[![Build Status](https://travis-ci.com/syuChen1/Shoppingfy-MERN.svg?branch=master)](https://travis-ci.com/syuChen1/Shoppingfy-MERN)
 
 ## Full-Stack Production-Ready Web App Built with: 
 - **React**, **Redux**
