@@ -38,7 +38,7 @@ Shoppingfy is deployed on **AWS Elastic BeanStalk**. It uses two nginx services.
 2. **Travis** automatically pulls repo
 3. **Travis** builds a test image and **test** the code
 4. On test **success**, you would be able to review the code and merge it into _master_
-5. **Travis** automatically pulls repo and builds **production** image
+5. After merging, **Travis** automatically pulls repo and builds **production** image
 6. **Travis** pushes **production** image to **Docker Hub**
 7. **Travis** pushes project to **AWS Elastic Beanstalk**
 8. **AWS Elastic Beanstalk** pulls image from **Docker Hub** and **deploys**. 
