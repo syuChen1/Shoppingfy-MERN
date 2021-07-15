@@ -13,7 +13,7 @@ script:
 after_success:
   - docker build -t syuchen1/shoppingfy-client ./client
   - docker build -t syuchen1/shoppingfy-nginx ./nginx
-  - docker build -t syuchen1/shoppingfy-server ./server
+  - docker build -t syuchen1/shoppingfy-server .
   # Login in to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # take those images and push them to docker hub
