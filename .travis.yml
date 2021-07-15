@@ -29,6 +29,6 @@ deploy:
   bucket_name: 'elasticbeanstalk-us-east-2-122853557114'
   bucket_path: 'shoppingfy'
   on:
-    branch: main
+    branch: master
   access_key_id: $AWS_ACCESS_KEY
   secret_access_key: $AWS_SECRET_KEY
