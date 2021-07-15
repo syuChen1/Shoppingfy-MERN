@@ -5,4 +5,4 @@ RUN npm install
 COPY ./server .
 ENV NODE_ENV development
 
-CMD ["npm", "run", "server"]
+CMD ["npm", "run", "start"]

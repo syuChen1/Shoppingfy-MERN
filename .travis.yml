@@ -5,7 +5,30 @@ services:
 language: generic
 
 before_install:
-  - docker build -t ryanyyyy11/shoppingfy-test -f ./client/Dockerfile.dev ./client
+  - docker build -t syuchen1/shoppingfy-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run -e CI=true ryanyyyy11/shoppingfy-test npm test
+  - docker run -e CI=true syuchen1/shoppingfy-test npm test
+
+after_success:
+  - docker build -t syuchen1/shoppingfy-client ./client
+  - docker build -t syuchen1/shoppingfy-nginx ./nginx
+  - docker build -t syuchen1/shoppingfy-server ./server
+  # Login in to the docker CLI
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  # take those images and push them to docker hub
+  - docker push syuchen1/shoppingfy-client
+  - docker push syuchen1/shoppingfy-nginx
+  - docker push syuchen1/shoppingfy-server
+
+deploy:
+  provider: elasticbeanstalk
+  region: 'us-east-2'
+  app: 'shoppingfy'
+  env: 'Shoppingfy-env'
+  bucket_name: 'elasticbeanstalk-us-east-2-122853557114'
+  bucket_path: 'shoppingfy'
+  on:
+    branch: main
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
