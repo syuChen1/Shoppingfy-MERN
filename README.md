@@ -1,7 +1,20 @@
-# Shoppingfy-MERN
-[![Build Status](https://travis-ci.com/syuChen1/Shoppingfy-MERN.svg?branch=master)](https://travis-ci.com/syuChen1/Shoppingfy-MERN)
+# Shoppingfy-MERN       [![Build Status](https://travis-ci.com/syuChen1/Shoppingfy-MERN.svg?branch=master)](https://travis-ci.com/syuChen1/Shoppingfy-MERN)
+Features:
+- **User**: 
+  - Full featured shopping cart
+  - Product reviews and ratings 
+  - Top products carousel
+  - Product pagination
+  - Product search feature
+  - Ceckout process (shipping, payment method, etc)
+  - **PayPal** / Credit card integration
+- **Admin**: 
+  - Product management
+  - User management
+  - Order details page
+  - Mark orders as delivered option
 
-## Full-Stack Production-Ready Web App Built with: 
+## Built with: 
 - **React**, **Redux**
 - **Javascript**, **Node.js**, **Express**, **MongoDB**
 - Containerlized with **Docker** 
